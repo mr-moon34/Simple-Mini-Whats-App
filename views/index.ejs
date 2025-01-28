@@ -1,0 +1,26 @@
+<form method="GET" action="/chats/new">
+        <button>New Chat</button>
+    </form>
+    
+    <div class="chat">
+        <% for (let chat of chats) { %>
+            <div class="chat">
+                <p>Id: <%= chat.id %></p>
+                <p>From: <%= chat.from %></p>
+                <div class="msg">
+                    <p><%= chat.msg %></p>
+
+                    <form method="GET" action="/chats/<%=chat.id%>/edit">
+                        <button>Edit</button>
+                    </form>
+
+                    <form method="POST" action="/chats/<%= chat.id %>?_method=DELETE">
+                        <button >Delete</button>
+                    </form>
+
+                </div>
+                <p>Received By: <%= chat.to %></p>
+                <hr>
+            </div>
+        <% } %>
+    </div>
